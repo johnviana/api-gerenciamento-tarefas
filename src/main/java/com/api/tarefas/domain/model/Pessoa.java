@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -24,6 +25,6 @@ public class Pessoa implements Serializable {
     private String departamento;
 
     @OneToMany(mappedBy = "pessoaAlocada")
-    private  List<Tarefa> tarefas;
+    private List<Tarefa> tarefas;
 
 }
