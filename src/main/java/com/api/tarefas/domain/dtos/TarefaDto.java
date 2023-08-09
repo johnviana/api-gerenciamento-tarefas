@@ -2,8 +2,8 @@ package com.api.tarefas.domain.dtos;
 
 import java.util.UUID;
 
-public class TarefaDto {
 
+public class TarefaDto {
 
     private UUID idTarefa;
 
