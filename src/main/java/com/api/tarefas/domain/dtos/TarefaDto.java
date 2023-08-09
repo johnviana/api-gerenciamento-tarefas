@@ -21,5 +21,5 @@ public class TarefaDto {
 
     private boolean finalizado;
 
-    private PessoaDto pessoaAlocada;
+    private PessoaDto pessoa;
 }
