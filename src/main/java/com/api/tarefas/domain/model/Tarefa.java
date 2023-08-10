@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -15,8 +14,8 @@ public class Tarefa implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
-    private UUID idTarefa;
+    @Column(name = "id_terefa")
+    private Long id;
 
     @Column
     private String titulo;
@@ -32,7 +31,8 @@ public class Tarefa implements Serializable {
 
     private boolean finalizado;
 
+//    @JsonIgnoreProperties(value = "nome", allowGetters = true )
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
-    private Pessoa pessoaAlocada;
+    private Pessoa pessoa;
 }
