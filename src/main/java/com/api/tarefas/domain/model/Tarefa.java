@@ -34,7 +34,7 @@ public class Tarefa {
     private String departamento;
 
     @Column
-    private String duracao;
+    private String duracao;	
     
     private int totalHora;
    

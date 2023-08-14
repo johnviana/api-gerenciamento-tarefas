@@ -23,6 +23,7 @@ import com.api.tarefas.domain.excepetion.TarefaNaoEncontradaException;
 import com.api.tarefas.domain.model.Pessoa;
 import com.api.tarefas.domain.repository.PessoaRepository;
 import com.api.tarefas.domain.service.PessoaService;
+import com.api.tarefas.domain.service.TarefaService;
 
 @RestController
 @RequestMapping(value = "/pessoas")
@@ -34,7 +35,7 @@ public class PessoaController {
     @Autowired
     private PessoaRepository pessoaRepository;
     
-   
+    
     @GetMapping
     public List<Pessoa> listarPessoas(){
     	return pessoaRepository.findAll();

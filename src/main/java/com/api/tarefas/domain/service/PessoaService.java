@@ -20,8 +20,11 @@ public class PessoaService {
 	
     @Autowired
     private PessoaRepository pessoaRepository;
+    
+    public long contarPessoas() {
+        return pessoaRepository.count();
+    }
 
-  
     @Transactional
     public Pessoa salvar(Pessoa pessoa) {
         return pessoaRepository.save(pessoa);

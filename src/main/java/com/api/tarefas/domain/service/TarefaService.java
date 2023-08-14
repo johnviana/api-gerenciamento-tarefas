@@ -14,12 +14,15 @@ import jakarta.transaction.Transactional;
 public class TarefaService {
 
     @Autowired
-    private TarefaReposiroty tarefaReposiroty;
+    private TarefaReposiroty tarefaRepository;
     
     @Autowired
     private PessoaService pessoaService;
 
-
+    public long contarTarefas() {
+        return tarefaRepository.count();
+    }
+    
     @Transactional
     public Tarefa salvar(Tarefa tarefa) {
         Long pessoaId = tarefa.getPessoaAlocada().getId();
@@ -28,12 +31,12 @@ public class TarefaService {
         
         tarefa.setPessoaAlocada(pessoa);
 
-        return tarefaReposiroty.save(tarefa);
+        return tarefaRepository.save(tarefa);
     }
      
 
     public Tarefa buscarOuFalhar(Long id){
-        return tarefaReposiroty.findById(id)
+        return tarefaRepository.findById(id)
                 .orElseThrow(() -> new TarefaNaoEncontradaException(id));
     }
     

@@ -11,13 +11,13 @@ import com.api.tarefas.domain.model.Pessoa;
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
     
-	List<Pessoa> findByDepartamento(String departamento);
+	List<Pessoa> findByDepartamentoNome(String departamento);
   
-	List<Pessoa> findByNomeAndDepartamento(String nome, String departamento);
+	List<Pessoa> findByNomeAndDepartamentoNome(String nome, String departamento);
 	
-//	@Query("SELECT PessoaInfo(p.nome, p.departamento, SUM(t.duracao)) FROM Pessoa p LEFT JOIN p.tarefas t GROUP BY p.id")
-//    List<PessoaInfo> listarPessoasInfo();
 	
 	@Query("SELECT p.nome, p.departamento, COALESCE(SUM(t.duracao), 0) FROM Pessoa p LEFT JOIN p.tarefas t GROUP BY p.id")
     List<Object[]> listarPessoasInfo();
+    
+    long count();
 }

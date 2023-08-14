@@ -1,10 +1,11 @@
 package com.api.tarefas.domain.repository;
 
-import com.api.tarefas.domain.model.Tarefa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.api.tarefas.domain.model.Departamento;
+
 @Repository
-public interface TarefaReposiroty extends JpaRepository<Tarefa, Long> {
-	long count();
+public interface DepartamentoRepository extends JpaRepository<Departamento, Long> {
+	 long count(); 
 }

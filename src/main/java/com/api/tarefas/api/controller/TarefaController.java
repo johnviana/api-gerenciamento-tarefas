@@ -63,7 +63,7 @@ public class TarefaController {
         Tarefa tarefa = optionalTarefa.get();
         String departamentoNome = tarefa.getDepartamento();
 
-        List<Pessoa> pessoasDoDepartamento = pessoaRepository.findByDepartamento(departamentoNome);
+        List<Pessoa> pessoasDoDepartamento = pessoaRepository.findByDepartamentoNome(departamentoNome);
         
         for (Pessoa pessoa : pessoasDoDepartamento) {
             if (pessoa.getTarefas().isEmpty()) {
