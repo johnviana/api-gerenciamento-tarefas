@@ -1,5 +1,7 @@
 package com.api.tarefas.domain.dto;
 
+import java.math.BigDecimal;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,17 +9,9 @@ import lombok.Setter;
 @Setter
 public class PessoaDto {
 	
-    
-	public PessoaDto(String nome, String departamento, long totalHorasGastas) {
-		super();
-		this.nome = nome;
-		this.departamento = departamento;
-		this.totalHorasGastas = totalHorasGastas;
-	}
-	
-	
 	private String nome;
-    private String departamento;
+	private long periodo;
+	private DepartamentoDto departamento;
     private long totalHorasGastas;
 
     

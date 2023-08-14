@@ -1,5 +1,6 @@
 package com.api.tarefas.domain.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.api.tarefas.domain.model.Pessoa;
 
 @Repository
-public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
+public interface PessoaRepository extends JpaRepository<Pessoa, Long>, PessoaReposioryQuery {
     
 	List<Pessoa> findByDepartamentoNome(String departamento);
   
@@ -20,4 +21,6 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
     List<Object[]> listarPessoasInfo();
     
     long count();
+    
+    
 }

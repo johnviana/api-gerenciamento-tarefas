@@ -1,5 +1,6 @@
 package com.api.tarefas.api.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -23,7 +24,6 @@ import com.api.tarefas.domain.excepetion.TarefaNaoEncontradaException;
 import com.api.tarefas.domain.model.Pessoa;
 import com.api.tarefas.domain.repository.PessoaRepository;
 import com.api.tarefas.domain.service.PessoaService;
-import com.api.tarefas.domain.service.TarefaService;
 
 @RestController
 @RequestMapping(value = "/pessoas")
@@ -47,7 +47,7 @@ public class PessoaController {
     }
     
     @PostMapping
-    public ResponseEntity<Object> salvarPessoa(@RequestBody PessoaDto pessoaDto){
+    public ResponseEntity<?> salvarPessoa(@RequestBody PessoaDto pessoaDto){
     	var pessoa = new Pessoa();
     	BeanUtils.copyProperties(pessoaDto, pessoa);
     	return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.salvar(pessoa));
@@ -83,6 +83,12 @@ public class PessoaController {
 			};
 		}
 	}
+    
+    @GetMapping("/nome/periodo")
+    public List<Pessoa> listarNomePeriodo(String nome, BigDecimal periodoInicio, 
+    		BigDecimal periodoFinal){
+    	return pessoaRepository.find(nome, periodoInicio, periodoFinal);
+    }
     
 
 }

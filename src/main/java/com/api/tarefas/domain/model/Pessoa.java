@@ -1,5 +1,6 @@
 package com.api.tarefas.domain.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,9 +31,13 @@ public class Pessoa  {
     @Column(name = "nome", nullable = false)
     private String nome;
     
+    @Column
+    private long periodo;
+    
     @ManyToOne
     @JoinColumn(name = "departamento_id")
     private Departamento departamento;
+    
     private long totalHorasGastas;
     
     @JsonIgnore
