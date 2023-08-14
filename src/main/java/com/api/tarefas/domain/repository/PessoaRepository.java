@@ -1,9 +1,23 @@
 package com.api.tarefas.domain.repository;
 
-import com.api.tarefas.domain.model.Pessoa;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.api.tarefas.domain.model.Pessoa;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
+    
+	List<Pessoa> findByDepartamento(String departamento);
+  
+	List<Pessoa> findByNomeAndDepartamento(String nome, String departamento);
+	
+//	@Query("SELECT PessoaInfo(p.nome, p.departamento, SUM(t.duracao)) FROM Pessoa p LEFT JOIN p.tarefas t GROUP BY p.id")
+//    List<PessoaInfo> listarPessoasInfo();
+	
+	@Query("SELECT p.nome, p.departamento, COALESCE(SUM(t.duracao), 0) FROM Pessoa p LEFT JOIN p.tarefas t GROUP BY p.id")
+    List<Object[]> listarPessoasInfo();
 }
